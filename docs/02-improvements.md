@@ -33,7 +33,7 @@ Prioritized from highest value per effort, based on the confirmed as-found confi
 2. Re-terminate each remaining room-end jack from POTS to a Cat6 RJ45 keystone (same wiring standard as the panel, 568B or 568A).
 3. Test every run with a wire-map cable tester (all 8 conductors straight through).
 4. Record lengths; permanent links must be under 90 m (295 ft).
-5. Prioritize the three rooms that depend on MoCA (second floor back right, sitting room media cabinet, master). None is RJ45 at the room end yet, so P2-5 is blocked until they are converted. The two finished rooms (upstairs middle, basement office) can use the new switch as soon as P2-2 is done.
+5. Prioritize the three rooms that use MoCA (top floor back right, sitting room media cabinet, master). None is RJ45 at the room end yet, so moving their traffic to Cat6 is blocked until they are converted. The two finished rooms (upstairs middle, basement office) can use the new switch as soon as P2-2 is done.
 
 **Check.** Wire map passes; an iperf3 test across a patched run reaches about 940 Mbps on gigabit.
 
@@ -82,7 +82,7 @@ What is already good: the GE splitter is rated 5 to 2500 MHz, which covers the f
 - Put a **75-ohm terminator** on the unused IN port (it currently has a plastic cap, which is not a terminator).
 - Identify the gold right-angle adapter on one leg; replace it with a straight compression connector if it is not a rated F-to-F adapter.
 - **Street RG6 drop (to the AT&T curb box):** its far end is unknown, so treat it as possibly live. Do not open the AT&T box; ask AT&T if you want it confirmed or removed. Leave it **disconnected from the splitter**. If it is ever connected (for example, a cable-provider service), first install a **MoCA POE filter** between the drop and the splitter so MoCA signals cannot leak out and outside signal cannot enter, and confirm the drop has a ground block (an electrician or the provider can check this).
-- Optional: note the master's second RG6 run is spare, and could be used if a second node is ever needed.
+- Optional: the master's second RG6 run is spare.
 
 **Check.** MoCA status page on each ECB6200 shows stable link rates between all nodes.
 
@@ -105,7 +105,9 @@ What is already good: the GE splitter is rated 5 to 2500 MHz, which covers the f
 
 **Today.** Backhaul is wired but runs over the shared MoCA 2.0 channel. A single test measured 890 Mbps upload over MoCA against 960 Mbps at the gateway, so the expected gain from Cat6 is small (up to roughly 70 Mbps, plus lower latency and no sharing between rooms). Treat this as low priority unless tests with several rooms active show MoCA slowing down.
 
-**Fix.** For each remote room that has an identified Cat6e port **and an RJ45 room-end jack (P2-1)**, plug the Google Wifi node's WAN port into that jack, patched to the panel switch (P2-2). Leave MoCA for any room with no usable Cat6e run, and as a fallback.
+**Fix.** For each node that has an identified Cat6e port **and an RJ45 room-end jack (P2-1)**, plug the Google Wifi node's WAN port into that jack, patched to the panel switch (P2-2). Leave MoCA for any room with no usable Cat6e run, and as a fallback. This applies to the top floor back right and sitting room nodes (and the master has no node).
+
+**Basement play room node (higher value than the others).** It has no wired backhaul, so it is the one node where a cable would change performance noticeably. The basement office is already RJ45 at the room end: if the office is close, a patch from the panel switch to the office jack plus a short run or adapter could give it a wired uplink. Otherwise consider a MoCA adapter if a coax outlet is in the play room (RG6 runs there are unused and not connected at the panel today).
 
 **Check.** Google Home app shows the node healthy; a wired speed test from the node's LAN port approaches line rate.
 

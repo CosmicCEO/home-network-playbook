@@ -8,13 +8,14 @@ Pre-filled with the confirmed as-found values. Copy the tables into your own not
 |---|---|---|---|---|---|
 | ONT | Fiber terminal | AT&T external device | n/a | Exterior wall | AT&T Cat6 to panel port B1 |
 | GW | Gateway | AT&T BGW210 | TBD | Media room | Default settings, Wi-Fi off |
-| HUB | Mesh primary | Google Wifi AC-1304 | 14150.376.32 | Media room | Router mode behind GW (double NAT) |
+| HUB | Mesh primary | Google Wifi AC-1304 | 14150.376.32 | Media room (entertainment cabinet) | Router mode behind GW (double NAT) |
 | SW1 | Switch | TP-Link, model TBD | TBD | Media room | Feeds wired devices and MC0 |
 | MC0 | MoCA adapter | Actiontec ECB6200 | TBD | Media room | MoCA 2.0, gigabit port |
 | MC1 | MoCA adapter | Actiontec ECB6200 (assumed) | TBD | Second floor back right | |
 | MC2 | MoCA adapter | Actiontec ECB6200 (assumed) | TBD | Sitting room media cabinet | |
-| MC3 | MoCA adapter | Actiontec ECB6200 (assumed) | TBD | Master (1 of 2 coax runs) | |
-| N1..N3 | Mesh nodes | Google Wifi AC-1304 | 14150.376.32 | Rooms of MC1..MC3 | Backhaul over MoCA, WAN port to MoCA |
+| MC3 | MoCA adapter | Actiontec ECB6200 (assumed) | TBD | Master (1 of 2 coax runs) | Feeds wired devices only; no mesh node |
+| N1, N2 | Mesh nodes | Google Wifi AC-1304 | 14150.376.32 | Top floor back right (MC1), sitting room (MC2) | Backhaul over MoCA, WAN port to MoCA |
+| N3 | Mesh node | Google Wifi AC-1304 | 14150.376.32 | Basement play room | No wired backhaul (assumed wireless) |
 | SPL | Coax splitter | GE digital 4-way, 5-2500 MHz | n/a | Garage comm panel | IN unused; 4 outputs used |
 
 ## Cable runs

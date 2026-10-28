@@ -19,7 +19,7 @@ Supporting material:
 
 ## The house in one paragraph
 
-AT&T Fiber enters through an exterior wall to an AT&T device (ONT), then Cat6 to the garage comm panel and on to an AT&T BGW210 gateway. Behind it sit a Google Wifi mesh (four identical AC-1304 units) and a TP-Link switch. The house has **Cat6e to every room**, landed on a 12-port keystone patch panel (RJ45 at the panel; only two rooms are RJ45 at the room end so far) and **RG6 coax to every room**, of which four runs are active. Remote rooms are reached over **MoCA 2.0 (Actiontec ECB6200) through a GE 4-way splitter**, and the mesh nodes backhaul over that MoCA link. Phase 2 plans use of the Cat6 properly, remove double NAT, and identify the five unlabeled patch ports.
+AT&T Fiber enters through an exterior wall to an AT&T device (ONT), then Cat6 to the garage comm panel and on to an AT&T BGW210 gateway. Behind it sit a Google Wifi mesh (four identical AC-1304 units) and a TP-Link switch. The house has **Cat6e to every room**, landed on a 12-port keystone patch panel (RJ45 at the panel; only two rooms are RJ45 at the room end so far) and **RG6 coax to every room**, of which four runs are active. Remote rooms are reached over **MoCA 2.0 (Actiontec ECB6200) through a GE 4-way splitter**, and two mesh nodes backhaul over that MoCA link (a third node, in the basement play room, has no wired backhaul). Phase 2 plans use of the Cat6 properly, remove double NAT, and identify the five unlabeled patch ports.
 
 ## Conventions
 
