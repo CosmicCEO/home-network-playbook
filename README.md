@@ -32,7 +32,7 @@ AT&T Fiber enters through an exterior wall to an AT&T device (ONT), then Cat6 to
 - [x] Phase 1 as-found documented (October 2026)
 - [x] Phase 2 improvement opportunities drafted
 - [x] Core device models recorded (BGW210, Google Wifi AC-1304, ECB6200, GE 4-way splitter)
-- [ ] Record measured speeds (see verification doc)
+- [x] First speed tests recorded (upload: gateway 960, MoCA 890, Wi-Fi 256 Mbps); download and per-room tests still to do
 - [ ] Identify the 5 unknown patch-panel ports (P2-0)
 - [ ] Add photos of the comm panel (label first)
 - [x] License: GPL v3 (see LICENSE)

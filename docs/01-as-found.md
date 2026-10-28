@@ -150,11 +150,11 @@ Wired backhaul is carried over the shared MoCA channel. Wi-Fi from each node ser
 ## 8. Known limitations of the as-found design
 
 - **Double NAT**: BGW210 in default mode in front of the Google Wifi hub.
-- **Shared MoCA 2.0 channel** for all remote rooms, with real-world throughput typically a few hundred Mbps shared (well under gigabit).
+- **Shared MoCA 2.0 channel** for all remote rooms. Measured upload over MoCA is 890 Mbps from a single test, close to the 960 Mbps measured at the gateway, so MoCA is not the bottleneck today. The channel is shared, so results with several rooms active at once are untested.
 - **Cat6e reaches the panel on a patch panel but no switch is there**, so the Cat6e is not carrying room traffic yet (apart from the AT&T uplink).
 - **Room ends are mostly still POTS**: only upstairs middle and basement office have been converted to RJ45 (plus the media room uplink run), so most rooms, including all three MoCA rooms, cannot use the Cat6e for Ethernet even once a switch is added.
 - **5 of 12 patch ports unidentified.**
-- **Mesh hardware**: Google Wifi AC-1304 is the 2016 generation (AC1200-class Wi-Fi).
+- **Mesh hardware**: Google Wifi AC-1304 is the 2016 generation (AC1200-class Wi-Fi). Measured Wi-Fi upload is 256 Mbps against 890 Mbps wired over MoCA, so Wi-Fi is the weakest link in the chain.
 
 ## Open questions
 

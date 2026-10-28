@@ -11,7 +11,7 @@ Prioritized from highest value per effort, based on the confirmed as-found confi
 | P2-2 | Move gateway and hub to the garage panel (option C), add a switch, patch rooms to it | Option C chosen; to do | Medium | Medium | **Very high** |
 | P2-3 | Finish the coax cleanup (cap IN port, check adapter) | To do | Low | Low | Medium |
 | P2-4 | Remove double NAT with BGW210 IP Passthrough | To do | Low | Free | High |
-| P2-5 | Move mesh backhaul from MoCA to Cat6 where a run exists | To do | Low | Free | High |
+| P2-5 | Move mesh backhaul from MoCA to Cat6 where a run exists | To do (low priority) | Low | Free | Low (MoCA measured 890 Mbps) |
 | P2-6 | Label, document, back up configs | Partly done (panel sheet) | Low | Low | Medium |
 | P2-7 | UPS for ONT, gateway, switch | To do | Low | Medium | Medium |
 | P2-8 | Optional: MoCA 2.5, PoE access points, newer mesh | Optional | Medium | Medium | Situational |
@@ -103,7 +103,7 @@ What is already good: the GE splitter is rated 5 to 2500 MHz, which covers the f
 
 ## P2-5: Move mesh backhaul from MoCA to Cat6
 
-**Today.** Backhaul is wired but runs over the shared MoCA 2.0 channel.
+**Today.** Backhaul is wired but runs over the shared MoCA 2.0 channel. A single test measured 890 Mbps upload over MoCA against 960 Mbps at the gateway, so the expected gain from Cat6 is small (up to roughly 70 Mbps, plus lower latency and no sharing between rooms). Treat this as low priority unless tests with several rooms active show MoCA slowing down.
 
 **Fix.** For each remote room that has an identified Cat6e port **and an RJ45 room-end jack (P2-1)**, plug the Google Wifi node's WAN port into that jack, patched to the panel switch (P2-2). Leave MoCA for any room with no usable Cat6e run, and as a fallback.
 
@@ -123,8 +123,8 @@ Put the ONT, BGW210, hub and core switch on a UPS. Check ONT power arrangements 
 ## P2-8: Optional
 
 - **MoCA 2.5 adapters** if any room must stay on coax and needs more than MoCA 2.0 can deliver.
-- **PoE access points** wired back to the panel switch to replace Google Wifi nodes (AC1200-class, 2016 generation).
-- **Plan tier check**: the BGW210 and Google Wifi ports are gigabit, so a plan above 1 Gbps would need new gateway and switching hardware.
+- **PoE access points** wired back to the panel switch to replace Google Wifi nodes (AC1200-class, 2016 generation). **This is now the strongest performance upgrade**: measured Wi-Fi upload is 256 Mbps while the wired paths reach 890 to 960 Mbps.
+- **Plan tier**: the gateway measured 960 Mbps, consistent with a 1 Gbps plan. The BGW210 and Google Wifi ports are gigabit, so a plan above 1 Gbps would need new gateway and switching hardware.
 
 ## Suggested order of work
 
