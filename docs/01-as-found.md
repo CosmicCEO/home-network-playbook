@@ -165,4 +165,5 @@ Wired backhaul is carried over the shared MoCA channel. Wi-Fi from each node ser
 - **O-5**: Which rooms map to the unidentified ports A3, A5, A6, B3, B4?
 - **O-6**: What is the gold right-angle adapter on the splitter, and which leg is it on?
 - **O-7**: The RG6 drop terminates at an AT&T box at the curb and its far end inside is not visible. Treat it as possibly live. Only AT&T can say what it is connected to. Is there a ground block where it enters the house?
-- **O-8**: Is there a second Cat6e run to the media room among the 5 unidentified ports? (Needed to link a panel switch to the hub without moving the gateway.) Does the media room TP-Link switch support VLANs (802.1Q)?
+- **O-8 (answered)**: The media room cabinet has only one Cat6e line (B2). Two other Cat6e runs end in POTS wall plates elsewhere in the media room, far from the cabinet; their panel ports are unidentified.
+- **O-9**: Is there power and room at the garage panel for the BGW210, hub, switch and a UPS? How will the media room get Wi-Fi once the hub moves to the garage?

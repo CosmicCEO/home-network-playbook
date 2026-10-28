@@ -8,7 +8,7 @@ Prioritized from highest value per effort, based on the confirmed as-found confi
 |---|---|---|---|---|---|
 | P2-0 | Identify and label the 5 unknown patch-panel ports | To do | Low | Free to low | High (prerequisite) |
 | P2-1 | Re-terminate Cat6e from POTS plugs to RJ45 keystones | **Panel end done; room ends done in upstairs middle and basement office**; rest to do | Medium | Low | Very high |
-| P2-2 | Add a switch at the garage panel and patch rooms to it | To do | Medium | Medium | **Very high** |
+| P2-2 | Move gateway and hub to the garage panel (option C), add a switch, patch rooms to it | Option C chosen; to do | Medium | Medium | **Very high** |
 | P2-3 | Finish the coax cleanup (cap IN port, check adapter) | To do | Low | Low | Medium |
 | P2-4 | Remove double NAT with BGW210 IP Passthrough | To do | Low | Free | High |
 | P2-5 | Move mesh backhaul from MoCA to Cat6 where a run exists | To do | Low | Free | High |
@@ -52,19 +52,25 @@ Prioritized from highest value per effort, based on the confirmed as-found confi
 | C. Move the gateway and hub to the panel | ONT, then BGW210, then hub, then panel switch; B2 becomes the LAN link to the media room switch | Cleanest long term; requires moving gear and power at the panel |
 | D. Stopgap over MoCA | Add an ECB6200 at the panel (for example on the splitter's spare IN port) and link the panel switch through it | Rooms on Cat6 share the same MoCA capacity, so most of the benefit is lost |
 
-**Recommended order.** Finish P2-0 first. If a second media-room run exists, use A. If not, choose between B and C.
+**Decision (October 2026): option C.** The media room cabinet has a single Cat6e line (B2). Two other Cat6e runs end in POTS wall plates elsewhere in the media room, far from the cabinet, so option A does not help.
 
-**Parts.** Gigabit switch (PoE if access points are planned), short Cat6 patch cables, a power outlet at the panel (or a UPS), mounting shelf. Option B needs VLAN-capable switches at both ends (check whether the existing TP-Link supports 802.1Q).
+**Parts.** Gigabit switch (5 to 8 ports is enough to start), short Cat6 patch cables, power at the panel, a small shelf or mounting plate, and optionally a UPS (P2-7).
 
-**Steps (option A).**
-1. Confirm power and ventilation at the garage panel.
-2. Patch the media-room link port into the panel switch, and connect it to the media room TP-Link switch.
-3. Patch room runs one at a time; confirm link and 1 Gbps negotiation.
-4. Keep MoCA in place until each room is proven on Cat6.
+**Steps (option C).**
+1. Confirm power, ventilation and space at the garage panel for the BGW210, hub, switch and a UPS.
+2. Screenshot the BGW210 and Google Wifi settings.
+3. Install and power the switch at the panel.
+4. Move the BGW210 to the panel and patch B1 (the ONT feed) to its WAN port.
+5. Move the hub to the panel: BGW210 LAN to hub WAN, hub LAN to the panel switch.
+6. Patch B2 into the panel switch. At the media cabinet, plug the B2 jack into the TP-Link switch. That switch still feeds the media room devices and the ECB6200, so MoCA and the mesh nodes keep working unchanged.
+7. Patch the finished RJ45 rooms (upstairs middle, basement office) into the panel switch.
+8. Then do P2-4 (IP Passthrough).
 
-**Check.** Each patched room negotiates 1 Gbps full duplex; iperf3 to the hub shows about 940 Mbps.
+**Consequence to plan for.** The hub also provides Wi-Fi, so moving it to the garage removes Wi-Fi coverage in the media room. Arrange a replacement before the move: a fifth Google Wifi unit or an access point in the media room, connected to the TP-Link switch.
 
-**Rollback.** Unplug the patch cable; the MoCA path is untouched.
+**Check.** The hub gets its WAN address from the BGW210; each patched room negotiates 1 Gbps full duplex; iperf3 to the hub shows about 940 Mbps.
+
+**Rollback.** Move the BGW210 and hub back to the media cabinet and re-patch B2 to the BGW210 WAN port.
 
 ## P2-3: Finish the coax cleanup
 
