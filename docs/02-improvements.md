@@ -66,7 +66,9 @@ Prioritized from highest value per effort, based on the confirmed as-found confi
 7. Patch the finished RJ45 rooms (upstairs middle, basement office) into the panel switch.
 8. Then do P2-4 (IP Passthrough).
 
-**Consequence to plan for.** The hub also provides Wi-Fi, so moving it to the garage removes Wi-Fi coverage in the media room. Arrange a replacement before the move: a fifth Google Wifi unit or an access point in the media room, connected to the TP-Link switch.
+**Consequence to plan for.** The hub also provides Wi-Fi, so moving it to the garage removes the hub's own Wi-Fi in the media room. Test first: a neighboring node (for example the sitting room node) may already cover it. If not, add a fifth Google Wifi unit or an access point in the media room, connected to the TP-Link switch.
+
+**Considered and rejected: move only the gateway and put Google Wifi in bridge mode.** Google documents bridge mode for a single Wifi device only; in a multi-unit mesh the primary must stay a router (the other units already act as bridges). Without a router-mode primary, a switch at the panel would sit on the BGW210's side and its rooms would not share the Wi-Fi network. See [Google's bridge mode page](https://support.google.com/wifi/answer/6240987?hl=en).
 
 **Check.** The hub gets its WAN address from the BGW210; each patched room negotiates 1 Gbps full duplex; iperf3 to the hub shows about 940 Mbps.
 
