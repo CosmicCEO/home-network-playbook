@@ -7,7 +7,7 @@ Documented October 2026, updated after a configuration interview. This describes
 | Medium | Where | Termination | Notes |
 |---|---|---|---|
 | Cat6e | Every room, home-run to the garage comm panel | **Panel end:** RJ45 keystone jacks on a keystone patch panel (all runs; converted by the owner before this survey). **Room end:** RJ45 in **only two rooms** so far; the rest are still **POTS-style plugs** | Which two rooms are RJ45 is open question O-2. POTS room ends use only 2 to 4 of 8 conductors, so those rooms cannot carry gigabit Ethernet yet. Rooms are usually not near RG6 or the media cabinet |
-| RG6 coax | Every room, on 1 or more walls, home-run to the comm panel | F-connector wall plates; compression F-connectors at the panel | **Only 4 runs are connected** (see section 5). All other RG6 runs are not connected at either end |
+| RG6 coax | Every room, on 1 or more walls, home-run to the comm panel | F-connector wall plates; compression F-connectors at the panel | **Only 4 in-house runs are connected** (see section 5). All other in-house RG6 runs are not connected at either end. A separate **RG6 copper drop runs from the street to the panel** and is **not connected to anything** at the panel |
 
 ### Cat6e patch panel map
 
@@ -109,8 +109,11 @@ flowchart TB
     SPL --- L2["Sitting room media cabinet<br/>ECB6200"]
     SPL --- L3["Second floor back right<br/>ECB6200"]
     SPL --- L4["Master, run 1 of 2<br/>ECB6200"]
-    X["All other RG6 runs:<br/>not connected at either end"] -.- SPL
+    X["All other in-house RG6 runs:<br/>not connected at either end"] -.- SPL
+    ST["RG6 drop from the street:<br/>not connected to anything at the panel"]
 ```
+
+The street drop is deliberately shown disconnected from the splitter. Keeping it that way means MoCA signals cannot leak out to the street, and nothing from outside enters the in-house coax.
 
 Splitter fact check: 5 to 2500 MHz fully covers the MoCA 2.0 band (about 1125 to 1675 MHz), so the rating is adequate. A 4-way splitter has about 6 to 8 dB loss per leg, which is acceptable for MoCA. Note one gold right-angle adapter on one leg (identity TBD).
 
@@ -159,3 +162,4 @@ Wired backhaul is carried over the shared MoCA channel. Wi-Fi from each node ser
 - **O-4**: Measured speeds (AT&T plan tier; media room vs each remote room, wired and Wi-Fi).
 - **O-5**: Which rooms map to the unidentified ports A3, A5, A6, B3, B4?
 - **O-6**: What is the gold right-angle adapter on the splitter, and which leg is it on?
+- **O-7**: The RG6 drop from the street: is the street end still connected to a provider tap or pedestal (could it be live), and is there a ground block where it enters the house?
