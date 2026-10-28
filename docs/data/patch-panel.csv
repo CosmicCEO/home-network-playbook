@@ -1,0 +1,13 @@
+port,label,used_as_found,notes
+A1,Great Room,unconfirmed,
+A2,Master,unconfirmed,
+A3,UNK,unidentified,
+A4,Upstairs Center,unconfirmed,
+A5,UNK,unidentified,
+A6,UNK,unidentified,
+B1,ATT IN,yes,AT&T Cat6 from exterior ONT
+B2,ATT Router - Living Room,yes,Patched from B1; run to BGW210
+B3,UNK,unidentified,
+B4,UNK,unidentified,
+B5,Kitchen,unconfirmed,
+B6,Attic Cable,unconfirmed,

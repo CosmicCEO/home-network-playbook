@@ -11,14 +11,15 @@ The repo is organized in two phases:
 
 Supporting material:
 
-- [docs/03-inventory-template.md](docs/03-inventory-template.md): fill-in sheet to capture your own house the same way
+- [docs/03-inventory-template.md](docs/03-inventory-template.md): inventory pre-filled for this house; reusable as a template
+- [docs/data/patch-panel.csv](docs/data/patch-panel.csv): patch panel port map
 - [docs/04-verification.md](docs/04-verification.md): how to test each link (iperf3, MoCA status, continuity)
 - [docs/05-glossary.md](docs/05-glossary.md): terms (ONT, MoCA, POTS, POE filter, double NAT...)
 - [sheets/pitch-sheet.pdf](sheets/pitch-sheet.pdf): one-page summary for sharing
 
 ## The house in one paragraph
 
-AT&T Fiber enters through an exterior wall to an AT&T device (ONT), then Cat6 to the home comm panel. The home has **Cat6e to every room** (currently terminated at POTS-style jacks) and **RG6 coax to every room on one or more walls**; everything terminates at the comm panel. Today the network is carried to the extra rooms over **MoCA (Ethernet over the coax)** to Nest mesh points, even though home-run Cat6 sits in the same walls. Phase 2 explores using that Cat6 properly.
+AT&T Fiber enters through an exterior wall to an AT&T device (ONT), then Cat6 to the garage comm panel and on to an AT&T BGW210 gateway. Behind it sit a Google Wifi mesh (four identical AC-1304 units) and a TP-Link switch. The house has **Cat6e to every room**, landed on a 12-port keystone patch panel (RJ45 at the panel; only two rooms are RJ45 at the room end so far) and **RG6 coax to every room**, of which four runs are active. Remote rooms are reached over **MoCA 2.0 (Actiontec ECB6200) through a GE 4-way splitter**, and the mesh nodes backhaul over that MoCA link. Phase 2 plans use of the Cat6 properly, remove double NAT, and identify the five unlabeled patch ports.
 
 ## Conventions
 
@@ -30,6 +31,8 @@ AT&T Fiber enters through an exterior wall to an AT&T device (ONT), then Cat6 to
 
 - [x] Phase 1 as-found documented (October 2026)
 - [x] Phase 2 improvement opportunities drafted
-- [ ] Record device models, firmware, and measured speeds (see verification doc)
+- [x] Core device models recorded (BGW210, Google Wifi AC-1304, ECB6200, GE 4-way splitter)
+- [ ] Record measured speeds (see verification doc)
+- [ ] Identify the 5 unknown patch-panel ports (P2-0)
 - [ ] Add photos of the comm panel (label first)
 - [x] License: GPL v3 (see LICENSE)
