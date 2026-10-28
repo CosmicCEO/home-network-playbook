@@ -41,13 +41,24 @@ Prioritized from highest value per effort, based on the confirmed as-found confi
 
 **Problem.** The patch panel exists, but there is no switch at the garage panel and only one patch cable is installed (B1 to B2, carrying the AT&T uplink), so the Cat6e runs cannot carry room traffic. Remote rooms still depend on the shared MoCA 2.0 channel.
 
-**Fix.** Install a gigabit switch (PoE if access points are planned) at the panel. Patch each room's port to it. Connect the switch to the Google Wifi hub's LAN port (or to the BGW210 once passthrough is in place; see P2-4).
+**Constraint.** The gateway and hub stay in the media room, and the media room has a **single** Cat6e run (B2), which already carries the AT&T WAN uplink. A panel switch can be added without moving the gateway, but it needs its own LAN path to the hub, and that run is taken.
 
-**Parts.** Gigabit switch, short Cat6 patch cables, a power outlet at the panel (or a UPS), mounting shelf.
+**Options for the LAN link (pick one).**
 
-**Steps.**
+| Option | How | Trade-off |
+|---|---|---|
+| A. Second run to the media room | One of the 5 unidentified ports (P2-0) may go there. Patch it from the panel switch to the media room TP-Link switch | Simplest; nothing moves. Depends on a run existing |
+| B. Share B2 with VLANs | Carry the AT&T WAN and the LAN as separate VLANs over B2 | Needs 802.1Q-capable switches at both ends; a config mistake can take the internet down |
+| C. Move the gateway and hub to the panel | ONT, then BGW210, then hub, then panel switch; B2 becomes the LAN link to the media room switch | Cleanest long term; requires moving gear and power at the panel |
+| D. Stopgap over MoCA | Add an ECB6200 at the panel (for example on the splitter's spare IN port) and link the panel switch through it | Rooms on Cat6 share the same MoCA capacity, so most of the benefit is lost |
+
+**Recommended order.** Finish P2-0 first. If a second media-room run exists, use A. If not, choose between B and C.
+
+**Parts.** Gigabit switch (PoE if access points are planned), short Cat6 patch cables, a power outlet at the panel (or a UPS), mounting shelf. Option B needs VLAN-capable switches at both ends (check whether the existing TP-Link supports 802.1Q).
+
+**Steps (option A).**
 1. Confirm power and ventilation at the garage panel.
-2. Connect the switch to the hub.
+2. Patch the media-room link port into the panel switch, and connect it to the media room TP-Link switch.
 3. Patch room runs one at a time; confirm link and 1 Gbps negotiation.
 4. Keep MoCA in place until each room is proven on Cat6.
 
