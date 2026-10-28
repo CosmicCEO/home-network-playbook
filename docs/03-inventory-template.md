@@ -25,7 +25,7 @@ Patch panel (garage), 12 keystone ports. Full table in [data/patch-panel.csv](da
 |---|---|---|---|---|---|
 | C-A1 | Cat6e | A1 Great Room | POTS unless one of the 2 RJ45 rooms | | |
 | C-A2 | Cat6e | A2 Master | same | | |
-| C-A4 | Cat6e | A4 Upstairs Center | same | | |
+| C-A4 | Cat6e | A4 Upstairs Center | RJ45 (upstairs middle, assumed same) | | |
 | C-B1/B2 | Cat6e | B1 ATT IN, B2 ATT Router | RJ45 (carries Ethernet) | | |
 | C-B5 | Cat6e | B5 Kitchen | same | | |
 | C-B6 | Cat6e | B6 Attic Cable | same | | |

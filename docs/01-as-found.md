@@ -6,7 +6,7 @@ Documented October 2026, updated after a configuration interview. This describes
 
 | Medium | Where | Termination | Notes |
 |---|---|---|---|
-| Cat6e | Every room, home-run to the garage comm panel | **Panel end:** RJ45 keystone jacks on a keystone patch panel (all runs; converted by the owner before this survey). **Room end:** RJ45 in **only two rooms** so far; the rest are still **POTS-style plugs** | Which two rooms are RJ45 is open question O-2. POTS room ends use only 2 to 4 of 8 conductors, so those rooms cannot carry gigabit Ethernet yet. Rooms are usually not near RG6 or the media cabinet |
+| Cat6e | Every room, home-run to the garage comm panel | **Panel end:** RJ45 keystone jacks on a keystone patch panel (all runs; converted by the owner before this survey). **Room end:** RJ45 in **two rooms** so far (**upstairs middle** and **basement office**), plus the media room run that carries the AT&T uplink (it must already be Ethernet-capable); the rest are still **POTS-style plugs** | None of the three MoCA rooms (second floor back right, sitting room media cabinet, master) is RJ45 at the room end yet. POTS room ends use only 2 to 4 of 8 conductors, so those rooms cannot carry gigabit Ethernet yet. Rooms are usually not near RG6 or the media cabinet |
 | RG6 coax | Every room, on 1 or more walls, home-run to the comm panel | F-connector wall plates; compression F-connectors at the panel | **Only 4 in-house runs are connected** (see section 5). All other in-house RG6 runs are not connected at either end. A separate **RG6 copper drop runs from an AT&T box at the curb to the panel**. It is **not connected to anything** at the panel; what it connects to inside the curb box is unknown |
 
 ### Cat6e patch panel map
@@ -15,18 +15,20 @@ Documented October 2026, updated after a configuration interview. This describes
 
 | Port | Label | Used as found? |
 |---|---|---|
-| A1 | Great Room | Not confirmed |
-| A2 | Master | Not confirmed |
+| A1 | Great Room | No (not patched) |
+| A2 | Master | No (not patched) |
 | A3 | UNK | Unidentified |
-| A4 | Upstairs Center | Not confirmed |
+| A4 | Upstairs Center | No (not patched). Room end is RJ45 (owner's "upstairs middle", assumed same) |
 | A5 | UNK | Unidentified |
 | A6 | UNK | Unidentified |
 | B1 | **ATT IN** | **Yes**: AT&T Cat6 from the exterior ONT |
 | B2 | **ATT Router - Living Room** | **Yes**: patched from B1; run to the router |
 | B3 | UNK | Unidentified |
 | B4 | UNK | Unidentified |
-| B5 | Kitchen | Not confirmed |
-| B6 | Attic Cable | Not confirmed |
+| B5 | Kitchen | No (not patched) |
+| B6 | Attic Cable | No (not patched) |
+
+**Only one patch cable is installed in the panel today: B1 to B2**, carrying the AT&T uplink to the router in the media room. Every other port is unpatched.
 
 5 of 12 ports are unidentified. Phase 2 starts by identifying them (P2-0).
 
@@ -150,14 +152,14 @@ Wired backhaul is carried over the shared MoCA channel. Wi-Fi from each node ser
 - **Double NAT**: BGW210 in default mode in front of the Google Wifi hub.
 - **Shared MoCA 2.0 channel** for all remote rooms, with real-world throughput typically a few hundred Mbps shared (well under gigabit).
 - **Cat6e reaches the panel on a patch panel but no switch is there**, so the Cat6e is not carrying room traffic yet (apart from the AT&T uplink).
-- **Room ends are mostly still POTS**: only two rooms have been converted to RJ45, so most rooms cannot use the Cat6e for Ethernet even once a switch is added.
+- **Room ends are mostly still POTS**: only upstairs middle and basement office have been converted to RJ45 (plus the media room uplink run), so most rooms, including all three MoCA rooms, cannot use the Cat6e for Ethernet even once a switch is added.
 - **5 of 12 patch ports unidentified.**
 - **Mesh hardware**: Google Wifi AC-1304 is the 2016 generation (AC1200-class Wi-Fi).
 
 ## Open questions
 
-- **O-1**: The sheet says "Living Room"; the narrative says "media room". Are they the same room, and is "Great Room" a third space?
-- **O-2**: Which two rooms have RJ45 at the room end, and which port does each land on?
+- **O-1**: The router is in the media room, but the sheet labels port B2 "Living Room". Treated as the same room. Is "Great Room" (A1) a separate space?
+- **O-2**: Upstairs middle and basement office are RJ45 at the room end. Which patch ports do they land on (A4 is assumed to be upstairs middle; the basement office port is unknown)?
 - **O-3**: Are all four ECB6200s the same model and firmware?
 - **O-4**: Measured speeds (AT&T plan tier; media room vs each remote room, wired and Wi-Fi).
 - **O-5**: Which rooms map to the unidentified ports A3, A5, A6, B3, B4?

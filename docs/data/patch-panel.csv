@@ -1,13 +1,13 @@
-port,label,used_as_found,notes
-A1,Great Room,unconfirmed,
-A2,Master,unconfirmed,
+port,label,patched_today,notes
+A1,Great Room,no,
+A2,Master,no,
 A3,UNK,unidentified,
-A4,Upstairs Center,unconfirmed,
+A4,Upstairs Center,no,Room end RJ45 (owner's upstairs middle; assumed same)
 A5,UNK,unidentified,
 A6,UNK,unidentified,
 B1,ATT IN,yes,AT&T Cat6 from exterior ONT
-B2,ATT Router - Living Room,yes,Patched from B1; run to BGW210
+B2,ATT Router - Living Room,yes,Only patch cable in the panel (B1 to B2); run to BGW210 in media room
 B3,UNK,unidentified,
 B4,UNK,unidentified,
-B5,Kitchen,unconfirmed,
-B6,Attic Cable,unconfirmed,
+B5,Kitchen,no,
+B6,Attic Cable,no,
