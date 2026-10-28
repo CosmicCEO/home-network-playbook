@@ -23,13 +23,13 @@ Patch panel (garage), 12 keystone ports. Full table in [data/patch-panel.csv](da
 
 | Run ID | Type | Panel port | Room end today | Tested date | Result |
 |---|---|---|---|---|---|
-| C-A1 | Cat6e | A1 Great Room | POTS unless one of the 2 RJ45 rooms | | |
-| C-A2 | Cat6e | A2 Master | same | | |
+| C-A1 | Cat6e | A1 Great Room | POTS (assumed) | | |
+| C-A2 | Cat6e | A2 Master | POTS (assumed) | | |
 | C-A4 | Cat6e | A4 Upstairs Center | RJ45 (upstairs middle, assumed same) | | |
 | C-B1/B2 | Cat6e | B1 ATT IN, B2 ATT Router | RJ45 (carries Ethernet) | | |
-| C-B5 | Cat6e | B5 Kitchen | same | | |
-| C-B6 | Cat6e | B6 Attic Cable | same | | |
-| C-A3, A5, A6, B3, B4 | Cat6e | UNK | unknown | | |
+| C-B5 | Cat6e | B5 Kitchen | POTS (assumed) | | |
+| C-B6 | Cat6e | B6 Attic Cable | POTS (assumed) | | |
+| C-A3, A5, A6, B3, B4 | Cat6e | UNK | unknown (basement office is one of the RJ45 rooms; its port is not yet identified) | | |
 | R-01..04 | RG6 | splitter outputs | media room, sitting room media cabinet, second floor back right, master | | |
 | R-05..n | RG6 | not connected | not connected at either end | | |
 
