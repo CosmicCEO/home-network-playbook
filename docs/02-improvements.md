@@ -62,7 +62,7 @@ What is already good: the GE splitter is rated 5 to 2500 MHz, which covers the f
 **Remaining.**
 - Put a **75-ohm terminator** on the unused IN port (it currently has a plastic cap, which is not a terminator).
 - Identify the gold right-angle adapter on one leg; replace it with a straight compression connector if it is not a rated F-to-F adapter.
-- **Street RG6 drop:** leave it **disconnected from the splitter**. If it is ever connected (for example, a cable-provider service), first install a **MoCA POE filter** between the drop and the splitter so MoCA signals cannot leak out and outside signal cannot enter, and confirm the drop has a ground block (an electrician or the provider can check this).
+- **Street RG6 drop (to the AT&T curb box):** its far end is unknown, so treat it as possibly live. Do not open the AT&T box; ask AT&T if you want it confirmed or removed. Leave it **disconnected from the splitter**. If it is ever connected (for example, a cable-provider service), first install a **MoCA POE filter** between the drop and the splitter so MoCA signals cannot leak out and outside signal cannot enter, and confirm the drop has a ground block (an electrician or the provider can check this).
 - Optional: note the master's second RG6 run is spare, and could be used if a second node is ever needed.
 
 **Check.** MoCA status page on each ECB6200 shows stable link rates between all nodes.
