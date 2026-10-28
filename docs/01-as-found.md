@@ -150,11 +150,11 @@ Wired backhaul is carried over the shared MoCA channel. Wi-Fi from each node ser
 ## 8. Known limitations of the as-found design
 
 - **Double NAT**: BGW210 in default mode in front of the Google Wifi hub.
-- **Shared MoCA 2.0 channel** for all remote rooms. Measured upload over MoCA is 890 Mbps from a single test, close to the 960 Mbps measured at the gateway, so MoCA is not the bottleneck today. The channel is shared, so results with several rooms active at once are untested.
+- **Shared MoCA 2.0 channel** for all remote rooms. Measured upload over MoCA is 890 Mbps from single tests in the master and the sitting room, close to the 960 Mbps measured at the gateway, so MoCA is not the bottleneck today. The channel is shared, so results with several rooms active at once are untested.
 - **Cat6e reaches the panel on a patch panel but no switch is there**, so the Cat6e is not carrying room traffic yet (apart from the AT&T uplink).
 - **Room ends are mostly still POTS**: only upstairs middle and basement office have been converted to RJ45 (plus the media room uplink run), so most rooms, including all three MoCA rooms, cannot use the Cat6e for Ethernet even once a switch is added.
 - **5 of 12 patch ports unidentified.**
-- **Mesh hardware**: Google Wifi AC-1304 is the 2016 generation (AC1200-class Wi-Fi). Measured Wi-Fi upload is 256 Mbps against 890 Mbps wired over MoCA, so Wi-Fi is the weakest link in the chain.
+- **Mesh hardware**: Google Wifi AC-1304 is the 2016 generation (AC1200-class Wi-Fi). Measured Wi-Fi upload is 256 Mbps against 890 Mbps wired over MoCA, so Wi-Fi is the weakest link in the chain. That test was on the main floor roughly midway between two nodes (sitting room and entertainment cabinet), a worst-case spot, so 256 Mbps understates typical Wi-Fi. Retest next to a node for a best case.
 
 ## Open questions
 
@@ -166,4 +166,5 @@ Wired backhaul is carried over the shared MoCA channel. Wi-Fi from each node ser
 - **O-6**: What is the gold right-angle adapter on the splitter, and which leg is it on?
 - **O-7**: The RG6 drop terminates at an AT&T box at the curb and its far end inside is not visible. Treat it as possibly live. Only AT&T can say what it is connected to. Is there a ground block where it enters the house?
 - **O-8 (answered)**: The media room cabinet has only one Cat6e line (B2). Two other Cat6e runs end in POTS wall plates elsewhere in the media room, far from the cabinet; their panel ports are unidentified.
+- **O-10**: Are the "sitting room" and "entertainment cabinet" Wi-Fi nodes two separate units, or the same node as the sitting room media cabinet MoCA location?
 - **O-9**: Is there power and room at the garage panel for the BGW210, hub, switch and a UPS? How will the media room get Wi-Fi once the hub moves to the garage?

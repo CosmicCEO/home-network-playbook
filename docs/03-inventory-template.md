@@ -49,5 +49,5 @@ Patch panel (garage), 12 keystone ports. Full table in [data/patch-panel.csv](da
 |---|---|---|---|---|
 | ISP speed test at gateway (BGW210, closest to the fiber) | not recorded | 960 | | 2026-10-28 |
 | Media room wired to internet | | | | |
-| Wired over RG6 MoCA (room not recorded) | not recorded | 890 | | 2026-10-28 |
-| Wi-Fi (room not recorded) | not recorded | 256 | | 2026-10-28 |
+| Wired over RG6 MoCA, master and sitting room | not recorded | 890 | | 2026-10-28 |
+| Wi-Fi, main floor, about midway between the sitting room and entertainment cabinet nodes (a worst-case spot) | not recorded | 256 | | 2026-10-28 |

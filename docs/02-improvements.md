@@ -123,7 +123,7 @@ Put the ONT, BGW210, hub and core switch on a UPS. Check ONT power arrangements 
 ## P2-8: Optional
 
 - **MoCA 2.5 adapters** if any room must stay on coax and needs more than MoCA 2.0 can deliver.
-- **PoE access points** wired back to the panel switch to replace Google Wifi nodes (AC1200-class, 2016 generation). **This is now the strongest performance upgrade**: measured Wi-Fi upload is 256 Mbps while the wired paths reach 890 to 960 Mbps.
+- **PoE access points** wired back to the panel switch to replace Google Wifi nodes (AC1200-class, 2016 generation). **Likely the strongest performance upgrade**, but confirm first: Wi-Fi upload was 256 Mbps at a spot midway between two nodes (worst case) while wired paths reach 890 to 960 Mbps. Retest beside a node; if it is much higher, node placement may matter more than new hardware.
 - **Plan tier**: the gateway measured 960 Mbps, consistent with a 1 Gbps plan. The BGW210 and Google Wifi ports are gigabit, so a plan above 1 Gbps would need new gateway and switching hardware.
 
 ## Suggested order of work
