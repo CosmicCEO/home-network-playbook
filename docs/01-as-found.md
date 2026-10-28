@@ -38,7 +38,7 @@ Documented October 2026, updated after a configuration interview. This describes
 |---|---|---|---|
 | Fiber terminal | AT&T external device (ONT) | 1 | On exterior wall; AT&T Cat6 to the panel |
 | Gateway | AT&T **BGW210** | 1 | **Default settings** (no IP Passthrough), **Wi-Fi off**. Gigabit-class LAN ports |
-| Mesh | Google Wifi, model **AC-1304**, software 14150.376.32 | 4 (hub + 3 nodes) | Owner calls it "Nest". All units are **identical**, each with 2 gigabit Ethernet ports (WAN + LAN). Locations: **media room (hub, in the entertainment cabinet)**, **top floor back right**, **sitting room**, **basement play room**. The back right and sitting room nodes **backhaul over MoCA (wired)**. The basement play room node has **no wired backhaul** (assumed wireless). **No node in the master** |
+| Mesh | Google Wifi, model **AC-1304**, software 14150.376.32 | 4 (hub + 3 nodes) | Owner calls it "Nest". All units are **identical**, each with 2 gigabit Ethernet ports (WAN + LAN). Locations: **media room (hub, in the entertainment cabinet)**, **top floor back right**, **sitting room**, **basement play room**. The back right and sitting room nodes **backhaul over MoCA (wired)**. The basement play room node has **no wired backhaul**; it backhauls over the Wi-Fi mesh. **No node in the master** |
 | Switch | TP-Link (model TBD) | 1 | Media room |
 | MoCA adapter | Actiontec **ECB6200** (MoCA 2.0, gigabit Ethernet port) | 4 | Media room + 3 remote rooms. Assumed identical |
 | Coax splitter | GE digital **4-way**, **5 to 2500 MHz**, power pass all ports | 1 | At panel. **IN port unused**; all four outputs in use (see section 5) |
@@ -49,7 +49,7 @@ Documented October 2026, updated after a configuration interview. This describes
 2. Patch B1 to **B2**, a Cat6e run to the **AT&T BGW210** in the media room (sheet says "Living Room"; see O-1).
 3. Media room: BGW210, then Google Wifi hub, then TP-Link switch (feeds wired devices), then an Actiontec ECB6200 whose coax goes to the splitter at the panel.
 4. Remote rooms: coax from the splitter to an ECB6200. In the top floor back right and the sitting room, the ECB6200 feeds the WAN port of a Google Wifi node (plus local wired devices on its LAN port). In the master, the ECB6200 feeds **wired devices only (no node)**.
-5. The basement play room has a Google Wifi node with no wired backhaul; it reaches the mesh over Wi-Fi (assumed).
+5. The basement play room has a Google Wifi node with no wired backhaul; it reaches the mesh over Wi-Fi.
 6. Result: the BGW210 (NAT) feeds the Google Wifi hub (second NAT). Double NAT is present.
 
 ## 4. Schematic A: Physical topology
@@ -101,7 +101,7 @@ flowchart TB
     subgraph R4["Basement play room"]
         N4["Google Wifi node<br/>no wired backhaul"]
     end
-    HUB -. "wireless backhaul (assumed)" .-> N4
+    HUB -. "wireless mesh backhaul" .-> N4
 ```
 
 ## 5. Schematic B: Coax (MoCA) plant
@@ -138,10 +138,10 @@ flowchart LR
     MC1 --- N1[Google Wifi node]
     MC2 --- N2[Google Wifi node]
     MC3 --- WD3[Wired devices only, no node]
-    HUB -. "wireless backhaul (assumed)" .- N4[Basement play room node]
+    HUB -. "wireless mesh backhaul" .- N4[Basement play room node]
 ```
 
-Wired backhaul for the back right and sitting room nodes is carried over the shared MoCA channel. The master's MoCA adapter serves wired devices only. The basement play room node uses wireless backhaul (assumed).
+Wired backhaul for the back right and sitting room nodes is carried over the shared MoCA channel. The master's MoCA adapter serves wired devices only. The basement play room node uses wireless mesh backhaul.
 
 ## 7. Replication notes (as found)
 
@@ -160,7 +160,7 @@ Wired backhaul for the back right and sitting room nodes is carried over the sha
 - **Room ends are mostly still POTS**: only upstairs middle and basement office have been converted to RJ45 (plus the media room uplink run), so most rooms, including all three MoCA rooms, cannot use the Cat6e for Ethernet even once a switch is added.
 - **5 of 12 patch ports unidentified.**
 - **Mesh hardware**: Google Wifi AC-1304 is the 2016 generation (AC1200-class Wi-Fi). Measured Wi-Fi upload is 256 Mbps against 890 Mbps wired over MoCA, so Wi-Fi is the weakest link in the chain. That test was on the main floor roughly midway between two nodes (sitting room and entertainment cabinet), a worst-case spot, so 256 Mbps understates typical Wi-Fi. Retest next to a node for a best case.
-- **Basement play room node has no wired backhaul.** If it backhauls over Wi-Fi it likely has weak, shared throughput, and each wireless hop roughly halves available speed.
+- **Basement play room node has no wired backhaul.** It backhauls over the Wi-Fi mesh, so it likely has weak, shared throughput, and each wireless hop roughly halves available speed.
 
 ## Open questions
 
@@ -173,5 +173,5 @@ Wired backhaul for the back right and sitting room nodes is carried over the sha
 - **O-7**: The RG6 drop terminates at an AT&T box at the curb and its far end inside is not visible. Treat it as possibly live. Only AT&T can say what it is connected to. Is there a ground block where it enters the house?
 - **O-8 (answered)**: The media room cabinet has only one Cat6e line (B2). Two other Cat6e runs end in POTS wall plates elsewhere in the media room, far from the cabinet; their panel ports are unidentified.
 - **O-10 (answered)**: The sitting room and the entertainment cabinet are two different nodes. The four units are: media room hub (entertainment cabinet), top floor back right, sitting room, basement play room. No node in the master.
-- **O-11**: What exactly does "not back hauling" mean for the basement play room node: wireless backhaul to another unit, or not connected to the mesh at all? How far is it from the basement office (an RJ45 room)?
+- **O-11 (answered)**: The basement play room node is part of the mesh and backhauls wirelessly. Still unknown: which unit it connects to, its signal quality in the Google Home app, and how far it is from the basement office (an RJ45 room).
 - **O-9**: Is there power and room at the garage panel for the BGW210, hub, switch and a UPS? How will the media room get Wi-Fi once the hub moves to the garage?

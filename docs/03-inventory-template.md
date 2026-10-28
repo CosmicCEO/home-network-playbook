@@ -15,7 +15,7 @@ Pre-filled with the confirmed as-found values. Copy the tables into your own not
 | MC2 | MoCA adapter | Actiontec ECB6200 (assumed) | TBD | Sitting room media cabinet | |
 | MC3 | MoCA adapter | Actiontec ECB6200 (assumed) | TBD | Master (1 of 2 coax runs) | Feeds wired devices only; no mesh node |
 | N1, N2 | Mesh nodes | Google Wifi AC-1304 | 14150.376.32 | Top floor back right (MC1), sitting room (MC2) | Backhaul over MoCA, WAN port to MoCA |
-| N3 | Mesh node | Google Wifi AC-1304 | 14150.376.32 | Basement play room | No wired backhaul (assumed wireless) |
+| N3 | Mesh node | Google Wifi AC-1304 | 14150.376.32 | Basement play room | No wired backhaul; wireless mesh backhaul |
 | SPL | Coax splitter | GE digital 4-way, 5-2500 MHz | n/a | Garage comm panel | IN unused; 4 outputs used |
 
 ## Cable runs
